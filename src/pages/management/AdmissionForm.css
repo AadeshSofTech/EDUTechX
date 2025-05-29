@@ -1,0 +1,90 @@
+/* AdmissionForm.css */
+
+.admission-form {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.admission-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.admission-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admission-form input[type="text"],
+.admission-form input[type="date"],
+.admission-form input[type="tel"],
+.admission-form select,
+.admission-form input[type="file"] {
+  padding: 12px 15px;
+  border: 1.8px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #fff;
+  outline: none;
+}
+
+.admission-form input[type="text"]:focus,
+.admission-form input[type="date"]:focus,
+.admission-form input[type="tel"]:focus,
+.admission-form select:focus,
+.admission-form input[type="file"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px #007bffaa;
+}
+
+.admission-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3csvg width='12' height='7' viewBox='0 0 12 7' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill='%23666' d='M6 7L0 0h12z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 7px;
+}
+
+.admission-form button[type="submit"] {
+  padding: 12px 20px;
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.admission-form button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.admission-form input[type="file"] {
+  padding: 6px 10px;
+}
+
+.admission-form input::placeholder {
+  color: #999;
+}
+
+@media (max-width: 480px) {
+  .admission-form {
+    margin: 20px 15px;
+    padding: 25px 15px;
+  }
+}

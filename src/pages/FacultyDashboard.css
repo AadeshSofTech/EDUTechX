@@ -1,0 +1,123 @@
+.faculty-dashboard {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fc;
+  min-height: 100vh;
+  padding-bottom: 4rem;
+}
+
+.topbar {
+  background-color: #ddeeff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.topbar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar .center {
+  text-align: center;
+}
+
+.topbar .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Grid of cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2rem;
+}
+
+.card {
+  background: linear-gradient(to top, #e0e7ff, #ffffff);
+  border-radius: 12px;
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #111;
+  position: relative;
+  overflow: hidden;
+
+  animation: fadeInBounce 0.5s ease forwards;
+  animation-fill-mode: both;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.card-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.support-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #004d40;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
