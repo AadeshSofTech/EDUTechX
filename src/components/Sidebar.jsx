@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 function Sidebar() {
   return (
-    <div className="sidebar">
+    <aside className="sidebar">
       <h2>Admin</h2>
       <nav>
         <ul>
@@ -16,7 +16,7 @@ function Sidebar() {
           <li><Link to="/reports">Reports</Link></li>
         </ul>
       </nav>
-    </div>
+    </aside>
   );
 }
 

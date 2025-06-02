@@ -1,0 +1,150 @@
+.review-container {
+  max-width: 720px;
+  margin: auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fafafa;
+}
+
+.summary-section {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.rating-overview {
+  flex: 1;
+  text-align: center;
+}
+
+.average-score {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stars {
+  font-size: 24px;
+  color: #fbbc04;
+}
+
+.total-reviews {
+  font-size: 14px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.rating-bars {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  background-color: #eee;
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar .fill {
+  height: 100%;
+  background-color: #fbbc04;
+  transition: width 0.3s ease;
+}
+
+.write-button {
+  background-color: #1a73e8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.review-form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 14px;
+}
+
+.submit-button {
+  background-color: #0f9d58;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedback-card {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #6200ea;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.feedback-content {
+  flex: 1;
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.feedback-text {
+  font-size: 14px;
+  margin-top: 6px;
+  color: #444;
+}
