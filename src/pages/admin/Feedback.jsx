@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./Feedback.css";
-import Adminsidebar from "../../components/Adminsidebar";
+import Adminsidebar from "../../components/AdminSidebar/Adminsidebar";
 
 const Feedback = () => {
   const [showForm, setShowForm] = useState(false);

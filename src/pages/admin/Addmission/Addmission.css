@@ -1,0 +1,549 @@
+.admission-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.admission-content {
+  flex: 1;
+  padding: 1.5rem;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f8fafc;
+}
+
+.admission-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admission-content::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.admission-content::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 8px;
+}
+
+/* Keep header visible while scrolling */
+.admission-header {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  z-index: 20;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+/* Tabs stick below header */
+.admission-tabs {
+  position: sticky;
+  top: 70px;
+  background-color: #f8f9fa;
+  z-index: 19;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.admission-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* Table scroll improvements */
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f8fafc;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 8px;
+}
+
+.admission-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+}
+
+/* Column widths for better spacing */
+.admission-table th,
+.admission-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admission-table th:nth-child(1),
+.admission-table td:nth-child(1) { /* ID */
+  min-width: 100px;
+  width: 10%;
+}
+
+.admission-table th:nth-child(2),
+.admission-table td:nth-child(2) { /* Name */
+  min-width: 150px;
+  width: 15%;
+}
+
+.admission-table th:nth-child(3),
+.admission-table td:nth-child(3) { /* Date */
+  min-width: 120px;
+  width: 12%;
+}
+
+.admission-table th:nth-child(4),
+.admission-table td:nth-child(4) { /* Class */
+  min-width: 100px;
+  width: 10%;
+}
+
+.admission-table th:nth-child(5),
+.admission-table td:nth-child(5) { /* Status */
+  min-width: 140px;
+  width: 15%;
+}
+
+.admission-table th:nth-child(6),
+.admission-table td:nth-child(6) { /* Contact/Enrollment */
+  min-width: 130px;
+  width: 15%;
+}
+
+.admission-table th:nth-child(7),
+.admission-table td:nth-child(7) { /* Documents/Fee */
+  min-width: 120px;
+  width: 12%;
+}
+
+.admission-table th:nth-child(8),
+.admission-table td:nth-child(8) { /* Actions */
+  min-width: 140px;
+  width: 11%;
+}
+
+/* Improved table header */
+.admission-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f8fafc;
+}
+
+.admission-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #4a5568;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Row hover effect */
+.admission-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.admission-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Status badges with better spacing */
+.status-badge,
+.document-status,
+.fee-status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+  text-align: center;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+/* Responsive improvements */
+@media (max-width: 1200px) {
+  .admission-content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .admission-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .admission-tabs {
+    top: 120px; /* Adjust for stacked header */
+  }
+}
+
+@media (max-width: 768px) {
+  .admission-content {
+    padding: 0.75rem;
+  }
+
+  .table-scroll {
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
+  }
+
+  .admission-table th,
+  .admission-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  /* Adjust sticky header for mobile */
+  .admission-header {
+    padding: 0.75rem 0;
+  }
+
+  .admission-tabs {
+    top: 140px;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.admission-table tr.loading td {
+  position: relative;
+  overflow: hidden;
+}
+
+.admission-table tr.loading td::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+.admission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-right: 10%;
+}
+
+.admission-header h1 {
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  color: #2c3e50;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  position: relative;
+  min-width: 200px;
+  flex: 1;
+}
+
+.search-box input {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 400px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  font-style: normal;
+  pointer-events: none;
+}
+
+.add-admission-btn {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.add-admission-btn:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.1);
+}
+
+.admission-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 1px;
+}
+
+.admission-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: -2px;
+}
+
+.tab.active {
+  color: #4299e1;
+  border-bottom: 2px solid #4299e1;
+}
+
+.tab:hover {
+  color: #4299e1;
+}
+
+.admission-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-right: 10%;
+}
+
+.admission-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: max-content;
+}
+
+.admission-table th,
+.admission-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admission-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #4a5568;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admission-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.status-pending {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+.status-verification {
+  background-color: #DBEAFE;
+  color: #2563EB;
+}
+
+.status-interview {
+  background-color: #E0E7FF;
+  color: #4F46E5;
+}
+
+.status-approved {
+  background-color: #DEF7EC;
+  color: #059669;
+}
+
+.status-rejected {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.document-status.complete {
+  background-color: #DEF7EC;
+  color: #059669;
+}
+
+.document-status.incomplete {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.fee-status.paid {
+  background-color: #DEF7EC;
+  color: #059669;
+}
+
+.fee-status.pending {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.view-btn,
+.edit-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.view-btn {
+  background-color: #EBF5FF;
+  color: #3182ce;
+}
+
+.edit-btn {
+  background-color: #F0FDF4;
+  color: #059669;
+}
+
+.view-btn:hover {
+  background-color: #BEE3F8;
+}
+
+.edit-btn:hover {
+  background-color: #DEF7EC;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1400px) {
+  .admission-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .admission-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+  }
+
+  .search-box {
+    flex: 1;
+  }
+
+  .search-box input {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admission-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .admission-table th,
+  .admission-table td {
+    padding: 0.5rem;
+    font-size: 0.813rem;
+  }
+} 

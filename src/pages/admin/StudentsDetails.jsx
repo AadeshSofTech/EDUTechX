@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Adminsidebar from "../../components/Adminsidebar";
+import Adminsidebar from "../../components/AdminSidebar/Adminsidebar";
 import "./StudentsDetails.css";
 
 const StudentsDetails = () => {

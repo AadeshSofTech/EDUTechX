@@ -1,0 +1,120 @@
+.camera-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.camera-modal {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.close-button {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.camera-preview {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.camera-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.capture-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.capture-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.camera-error {
+  padding: 2rem;
+  text-align: center;
+  color: #ef4444;
+}
+
+/* Animation */
+.camera-modal {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .camera-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .capture-button {
+    width: 100%;
+    justify-content: center;
+  }
+} 

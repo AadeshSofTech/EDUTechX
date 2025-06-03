@@ -1,0 +1,253 @@
+.view-admission-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.view-admission {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+  padding: 2rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.view-header h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  color: #333;
+  transform: scale(1.1);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.detail-group {
+  background-color: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.detail-group:hover {
+  background-color: #f0f7ff;
+  transform: translateY(-2px);
+}
+
+.detail-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.detail-group p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-document-verification {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.status-interview-scheduled {
+  background-color: #e0e7ff;
+  color: #1e40af;
+}
+
+.documents-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.document-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.document-status-item:hover {
+  background-color: #f0f7ff;
+}
+
+.document-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.document-indicator.submitted {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.document-indicator.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.document-name {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.view-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.close-view-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  color: #666;
+  border: none;
+  transition: all 0.2s;
+}
+
+.close-view-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Custom scrollbar */
+.view-admission::-webkit-scrollbar {
+  width: 8px;
+}
+
+.view-admission::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.view-admission::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.view-admission::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 768px) {
+  .view-admission {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .view-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .documents-list {
+    grid-template-columns: 1fr;
+  }
+
+  .close-view-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+} 
