@@ -224,4 +224,43 @@
   .notification-area {
     width: 100%;
   }
+}
+
+.welcome-section {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  margin-left: 50px;
+}
+
+.profile-preview {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3b82f6;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2937;
+}
+
+.profile-info p {
+  margin: 0.25rem 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
 } 

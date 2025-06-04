@@ -35,7 +35,7 @@ const Admission = () => {
     {
       id: 'ADM002',
       studentName: 'Sarah Johnson',
-      applicationDate: '2024-03-14',
+      applicationDate: '2024-03-14', 
       class: '8',
       status: 'document verification',
       contactNumber: '+1 234-567-8901',

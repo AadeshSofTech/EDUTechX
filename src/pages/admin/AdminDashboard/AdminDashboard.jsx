@@ -4,9 +4,11 @@ import Adminsidebar from "../../../components/AdminSidebar/Adminsidebar";
 import { Link } from "react-router-dom";
 import DashboardChart from "../../../components/charts/DashboardChart";
 import StatCard from "../../../components/charts/StatCard";
+import { useProfile } from '../../../context/ProfileContext';
 
 function AdminDashboard() {
   const [chartType, setChartType] = useState('line');
+  const { profileData } = useProfile();
 
   const cardData = [
     {
@@ -54,16 +56,26 @@ function AdminDashboard() {
       <main className='dashboard-content'>
         <header className='dashboard-header'>
           {/* Profile */}
-          <div className='user-info'>
-            <Link to='/profile'>
-              <img src='/user.jpg' alt='User' className='user-avatar' />
-            </Link>
-          </div>
+          <Link to={'/admin/profile'}>
+            <div className='welcome-section'>
+              <div className='profile-preview'>
+                <img
+                  src={profileData.avatar}
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className='profile-info'>
+                  <h2>Welcome, {profileData.name}</h2>
+                  <p>{profileData.role}</p>
+                </div>  
+              </div>
+            </div>
+          </Link>
 
           {/* admin details */}
-          <div className='user-info'>
+          {/* <div className='user-info'>
             <span>Admin ID: 2124UDSM2076</span>
-          </div>
+          </div> */}
         </header>
 
         <section className='summary-cards'>
@@ -82,13 +94,13 @@ function AdminDashboard() {
         <section className='data-section'>
           <div className='chart-area'>
             <div className="chart-controls mb-4">
-              <button 
+              <button
                 className={`mr-2 px-4 py-2 rounded ${chartType === 'line' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
                 onClick={() => setChartType('line')}
               >
                 Attendance Trends
               </button>
-              <button 
+              <button
                 className={`px-4 py-2 rounded ${chartType === 'bar' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
                 onClick={() => setChartType('bar')}
               >

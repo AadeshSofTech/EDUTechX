@@ -3,40 +3,15 @@ import AdminSidebar from '../../../components/AdminSidebar/Adminsidebar';
 import { FaCamera, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCalendar, FaUserGraduate, 
          FaLinkedin, FaGithub, FaTwitter, FaPencilAlt, FaSave, FaTimes, FaTrash } from 'react-icons/fa';
 import CameraModal from './CameraModal';
+import { useProfile } from '../../../context/ProfileContext';
 import './Profile.css';
 
 const Profile = () => {
+  const { profileData, updateProfile, updateProfilePicture } = useProfile();
   const [isEditing, setIsEditing] = useState(false);
   const [showPhotoOptions, setShowPhotoOptions] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
   const fileInputRef = useRef(null);
-
-  const [profileData, setProfileData] = useState({
-    name: "Dr. Sarah Johnson",
-    role: "Senior Administrator",
-    email: "sarah.johnson@school.edu",
-    phone: "+1 (555) 123-4567",
-    address: "123 Education Avenue, Academic District",
-    joinDate: "September 2020",
-    education: "Ph.D. in Educational Leadership",
-    department: "School Administration",
-    expertise: ["Educational Leadership", "Curriculum Development", "Staff Management", 
-                "Student Affairs", "Policy Implementation", "Strategic Planning"],
-    bio: "Dedicated educational administrator with over 10 years of experience in academic leadership and institutional development. Committed to fostering an innovative and inclusive learning environment.",
-    socialLinks: {
-      linkedin: "linkedin.com/in/sarahjohnson",
-      github: "github.com/sarahedu",
-      twitter: "@sarah_edu"
-    },
-    achievements: [
-      "Led school-wide digital transformation initiative",
-      "Increased student satisfaction rate by 35%",
-      "Implemented innovative STEM program",
-      "Published in Educational Leadership Journal"
-    ],
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
-  });
-
   const [editedData, setEditedData] = useState({ ...profileData });
 
   const handleEdit = () => {
@@ -45,9 +20,8 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    setProfileData(editedData);
+    updateProfile(editedData);
     setIsEditing(false);
-    // Here you would typically save the changes to a backend
   };
 
   const handleCancel = () => {
@@ -85,10 +59,7 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setProfileData(prev => ({
-          ...prev,
-          avatar: reader.result
-        }));
+        updateProfilePicture(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -100,19 +71,17 @@ const Profile = () => {
     setShowPhotoOptions(false);
   };
 
-  const handleCapturedPhoto = (photoData) => {
-    setProfileData(prev => ({
-      ...prev,
-      avatar: photoData
-    }));
+  const handleCameraPhoto = (photoData) => {
+    updateProfilePicture(photoData);
+    setShowCamera(false);
+  };
+
+  const handleCameraClose = () => {
     setShowCamera(false);
   };
 
   const handleDeletePhoto = () => {
-    setProfileData(prev => ({
-      ...prev,
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=default"
-    }));
+    updateProfilePicture("https://api.dicebear.com/7.x/avataaars/svg?seed=default");
     setShowPhotoOptions(false);
   };
 
@@ -140,15 +109,16 @@ const Profile = () => {
             )}
           </div>
         </div>
-
+        
         <div className="profile-grid">
+          {/* Left Column - Basic Info */}
           <div className="profile-main-info">
             <div className="profile-avatar-section">
-              <div className="avatar-container">
+            <div className="avatar-container">
                 <img src={profileData.avatar} alt="Profile" className="profile-avatar" />
                 <button className="camera-button" onClick={handlePhotoClick}>
-                  <FaCamera />
-                </button>
+                <FaCamera />
+              </button>
                 {showPhotoOptions && (
                   <div className="photo-options">
                     <button onClick={() => fileInputRef.current?.click()}>
@@ -202,7 +172,7 @@ const Profile = () => {
                 </>
               )}
             </div>
-
+            
             <div className="social-links">
               {isEditing ? (
                 <>
@@ -294,31 +264,32 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                  <div className="info-item">
+              <div className="info-item">
                     <FaEnvelope className="info-icon" />
-                    <span>{profileData.email}</span>
-                  </div>
-                  <div className="info-item">
+                <span>{profileData.email}</span>
+              </div>
+              <div className="info-item">
                     <FaPhone className="info-icon" />
-                    <span>{profileData.phone}</span>
-                  </div>
-                  <div className="info-item">
+                <span>{profileData.phone}</span>
+              </div>
+              <div className="info-item">
                     <FaMapMarkerAlt className="info-icon" />
-                    <span>{profileData.address}</span>
-                  </div>
-                  <div className="info-item">
+                <span>{profileData.address}</span>
+              </div>
+              <div className="info-item">
                     <FaCalendar className="info-icon" />
-                    <span>Joined {profileData.joinDate}</span>
-                  </div>
-                  <div className="info-item">
+                <span>Joined {profileData.joinDate}</span>
+              </div>
+              <div className="info-item">
                     <FaUserGraduate className="info-icon" />
-                    <span>{profileData.education}</span>
-                  </div>
+                <span>{profileData.education}</span>
+              </div>
                 </>
               )}
             </div>
           </div>
 
+          {/* Right Column - Detailed Info */}
           <div className="profile-details">
             <section className="bio-section">
               <h3>About Me</h3>
@@ -358,7 +329,7 @@ const Profile = () => {
                       >
                         <FaTimes />
                       </button>
-                    </div>
+                </div>
                   ))}
                   <button
                     onClick={() => {
@@ -422,9 +393,9 @@ const Profile = () => {
                     <div key={index} className="achievement-item">
                       <div className="achievement-marker">🏆</div>
                       <p>{achievement}</p>
-                    </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
+              </div>
               )}
             </section>
           </div>
@@ -433,8 +404,8 @@ const Profile = () => {
 
       {showCamera && (
         <CameraModal
-          onCapture={handleCapturedPhoto}
-          onClose={() => setShowCamera(false)}
+          onCapture={handleCameraPhoto}
+          onClose={handleCameraClose}
         />
       )}
     </div>

@@ -4,52 +4,75 @@ import "./Adminsidebar.css";
 
 const Adminsidebar = () => {
   const modules = [
+    // Dashboard & Profile
     { name: "Dashboard", icon: "🏠", path: "/admin" },
-    { name: "Addmission", icon: "🎓", path: "/admin/admission" },
-    { name: "Registration", icon: "🪪", path: "/registration" },
-    { name: "ID Card Generator", icon: "🪪", path: "/management/idcard" },
-    { name: "Academics", icon: "📚", path: "/academics" },
-    { name: "Study Material", icon: "📘", path: "/material" },
-    { name: "Assignments", icon: "📝", path: "/faculty/assignments" },
-    { name: "Quiz", icon: "❓", path: "/quiz" },
-    { name: "Project Monitoring", icon: "📈", path: "/project" },
-    { name: "Lesson Plan", icon: "🧾", path: "/faculty/lesson-plan" },
-    { name: "Upload Syllabus", icon: "📂", path: "/faculty/syllabus" },
-    { name: "Examination", icon: "🧪", path: "/examination" },
-    { name: "Programming Lab Exam", icon: "💻", path: "/labexam" },
-    { name: "Exam Schedule", icon: "🧪", path: "/faculty/exams" },
-    { name: "Enter Marks", icon: "✏️", path: "/faculty/marks" },
-    { name: "Academic Calendar", icon: "📅", path: "/calendar" },
-    { name: "Time Table", icon: "📆", path: "/timetable" },
-    { name: "Faculty Time Table", icon: "📆", path: "/faculty/timetable" },
-    { name: "My Subjects", icon: "📚", path: "/faculty/subjects" },
-    { name: "Student List", icon: "👨‍🎓", path: "/students-Details" },
-    { name: "Take Attendance", icon: "🗓️", path: "/faculty/attendance" },
-    { name: "Leave Application", icon: "📄", path: "/faculty/leave" },
-    { name: "Post Notice", icon: "📢", path: "/faculty/notice" },
-    { name: "My Profile", icon: "👤", path: "/profile" },
-    { name: "Clearance", icon: "✅", path: "/clearance" },
-    { name: "Certificate", icon: "📄", path: "/certificate" },
-    { name: "Attendance", icon: "🧾", path: "/attendance" },
-    { name: "Feedback", icon: "🗣️", path: "/feedback" },
-    { name: "Grievance", icon: "📢", path: "/grievance" },
-    { name: "Career", icon: "💼", path: "/career" },
-    { name: "Mentor-Mentee", icon: "👥", path: "/mentorship" },
-    { name: "NBA", icon: "🏆", path: "/nba" },
-    { name: "Event", icon: "📅", path: "/event" },
-    { name: "Meeting Management", icon: "📋", path: "/meetings" },
-    { name: "Hostel", icon: "🏠", path: "/hostel" },
-    { name: "Transport", icon: "🚌", path: "/transport" },
-    { name: "Accounts", icon: "💳", path: "/accounts" },
-    { name: "Fee Management", icon: "💰", path: "/management/fees" },
-    { name: "Bus Fees", icon: "🚌", path: "/management/busfees" },
-    { name: "Scholarships", icon: "🎖️", path: "/management/scholarship" },
-    { name: "Add Faculty", icon: "➕", path: "/admin/addfaculty" },
+    { name: "My Profile", icon: "👤", path: "/admin/profile" },
+    
+    // Student Management
+    { name: "Admission", icon: "🎓", path: "/admin/admission" },
+    { name: "Registration", icon: "📝", path: "/admin/registration" },
+    { name: "Student List", icon: "👨‍🎓", path: "/admin/students" },
+    { name: "ID Card Generator", icon: "🪪", path: "/admin/idcard" },
+    
+    // Academic Management
+    { name: "Academics", icon: "📚", path: "/admin/academics" },
+    { name: "Study Material", icon: "📘", path: "/admin/material" },
+    { name: "Assignments", icon: "📝", path: "/admin/assignment" },
+    { name: "Quiz", icon: "❓", path: "/admin/quiz" },
+    { name: "Project Monitoring", icon: "📈", path: "/admin/project" },
+    { name: "Lesson Plan", icon: "🧾", path: "/admin/lesson-plan" },
+    { name: "Upload Syllabus", icon: "📂", path: "/admin/syllabus" },
+    
+    // Examination
+    { name: "Examination", icon: "🧪", path: "/admin/examination" },
+    { name: "Programming Lab Exam", icon: "💻", path: "/admin/labexam" },
+    { name: "Exam Schedule", icon: "🧪", path: "/admin/exams" },
+    { name: "Enter Marks", icon: "✏️", path: "/admin/marks" },
+    
+    // Schedule Management
+    { name: "Academic Calendar", icon: "📅", path: "/admin/academic-calendar" },
+    { name: "Time Table", icon: "📆", path: "/admin/timetable" },
+    { name: "Faculty Time Table", icon: "📆", path: "/admin/faculty/timetable" },
+    
+    // Attendance & Leave
+    { name: "Attendance", icon: "🧾", path: "/admin/attendance" },
+    { name: "Take Attendance", icon: "🗓️", path: "/admin/faculty/attendance" },
+    { name: "Leave Application", icon: "📄", path: "/admin/leave" },
+    
+    // Communication
+    { name: "Post Notice", icon: "📢", path: "/admin/notice" },
+    { name: "Feedback", icon: "🗣️", path: "/admin/feedback" },
+    { name: "Grievance", icon: "📢", path: "/admin/grievance" },
+    
+    // Student Services
+    { name: "Clearance", icon: "✅", path: "/admin/clearance" },
+    { name: "Certificate", icon: "📄", path: "/admin/certificate" },
+    { name: "Career", icon: "💼", path: "/admin/career" },
+    { name: "Mentor-Mentee", icon: "👥", path: "/admin/mentorship" },
+    
+    // Campus Management
+    { name: "Hostel", icon: "🏠", path: "/admin/hostel" },
+    { name: "Transport", icon: "🚌", path: "/admin/transport" },
+    { name: "Event", icon: "📅", path: "/admin/event" },
+    { name: "Meeting Management", icon: "📋", path: "/admin/meetings" },
+    
+    // Finance
+    { name: "Accounts", icon: "💳", path: "/admin/accounts" },
+    { name: "Fee Management", icon: "💰", path: "/admin/fees" },
+    { name: "Bus Fees", icon: "🚌", path: "/admin/busfees" },
+    { name: "Scholarships", icon: "🎖️", path: "/admin/scholarship" },
     { name: "Staff Payroll", icon: "💵", path: "/admin/payroll" },
+    
+    // Faculty Management
+    { name: "Add Faculty", icon: "➕", path: "/admin/faculty/add" },
+    { name: "My Subjects", icon: "📚", path: "/admin/faculty/subjects" },
+    
+    // Administration
+    { name: "NBA", icon: "🏆", path: "/admin/nba" },
     { name: "System Settings", icon: "⚙️", path: "/admin/settings" },
     { name: "Backup & Restore", icon: "🧩", path: "/admin/backup" },
     { name: "Logs & Audit", icon: "📑", path: "/admin/logs" },
-    { name: "Reports", icon: "📊", path: "/management/reports" },
+    { name: "Reports", icon: "📊", path: "/admin/reports" },
   ];
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
